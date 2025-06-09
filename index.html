@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manifiesto Ágil palabra por palabra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    #text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 1ch;
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { background: transparent; }
+      50% { background: black; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manifiesto Ágil</h1>
+  <p id="text"><span id="content"></span><span class="cursor">&nbsp;</span></p>
+
+  <script>
+    const texto = `Estamos descubriendo formas mejores de desarrollar software tanto por nuestra propia experiencia como ayudando a terceros. A través de este trabajo hemos aprendido a valorar:
+    
+    Individuos e interacciones sobre procesos y herramientas.
+    Software funcionando sobre documentación extensiva.
+    Colaboración con el cliente sobre negociación contractual.
+    Respuesta ante el cambio sobre seguir un plan.
+
+    Es decir, aunque valoramos los elementos de la derecha, valoramos más los de la izquierda.`;
+
+    const palabras = texto.split(" ");
+    const destino = document.getElementById("content");
+
+    let i = 0;
+    function mostrarPalabra() {
+      if (i < palabras.length) {
+        destino.innerHTML += palabras[i] + " ";
+        i++;
+        setTimeout(mostrarPalabra, 200); // velocidad ajustable
+      }
+    }
+
+    mostrarPalabra();
+  </script>
+
+</body>
+</html>
